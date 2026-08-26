@@ -1,9 +1,11 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+    import WorkSection from '@/components/WorkSection.vue';
+    import AboutSection from '@/components/AboutSection.vue';
+    import JourneySection from '@/components/JourneySection.vue';
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+    <WorkSection />
+    <AboutSection />
+    <JourneySection />
 </template>
