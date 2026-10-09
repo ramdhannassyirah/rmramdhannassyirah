@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="id" data-theme="dark">
+<html lang="id" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta
@@ -380,11 +380,22 @@
         <nav
           class="flex flex-none items-center gap-1 text-sm font-semibold sm:gap-6"
         >
-          <a href="#keahlian" class="u hidden sm:inline">Keahlian</a>
-          <a href="#proyek" class="u hidden sm:inline">Proyek</a>
-          <a href="#proses" class="u hidden sm:inline">Cara kerja</a>
-          <a href="#faq" class="u hidden md:inline">FAQ</a>
-          <a href="#kontak" class="u hidden sm:inline">Kontak</a>
+          <a href="#keahlian" class="u hidden sm:inline" data-t="nSkill"
+            >Keahlian</a
+          >
+          <a href="#proyek" class="u hidden sm:inline" data-t="nProj">Proyek</a>
+          <a href="#proses" class="u hidden sm:inline" data-t="nWork"
+            >Cara kerja</a
+          >
+          <a href="#faq" class="u hidden md:inline" data-t="nFaq">FAQ</a>
+          <a href="#kontak" class="u hidden sm:inline" data-t="nContact"
+            >Kontak</a
+          >
+          <button
+            id="bhs"
+            type="button"
+            class="flex min-h-[44px] min-w-[44px] items-center justify-center gap-1 hover:text-accent sm:min-h-0 sm:min-w-0"
+          ></button>
           <button
             id="tema"
             type="button"
@@ -410,26 +421,31 @@
           <a
             href="#keahlian"
             class="flex min-h-[48px] items-center border-b border-line text-base font-semibold"
+            data-t="nSkill"
             >Keahlian</a
           >
           <a
             href="#proyek"
             class="flex min-h-[48px] items-center border-b border-line text-base font-semibold"
+            data-t="nProj"
             >Proyek</a
           >
           <a
             href="#proses"
             class="flex min-h-[48px] items-center border-b border-line text-base font-semibold"
+            data-t="nWork"
             >Cara kerja</a
           >
           <a
             href="#faq"
             class="flex min-h-[48px] items-center border-b border-line text-base font-semibold"
+            data-t="nFaq"
             >FAQ</a
           >
           <a
             href="#kontak"
             class="flex min-h-[48px] items-center text-base font-semibold"
+            data-t="nContact"
             >Kontak</a
           >
         </div>
@@ -443,20 +459,21 @@
             class="max-w-4xl text-[1.9rem] font-extrabold leading-[1.12] tracking-[-0.03em] min-[400px]:text-4xl sm:text-5xl sm:leading-[1.08] lg:text-6xl"
           >
             <span class="hl"
-              ><span style="animation-delay: 0.05s"
+              ><span data-t="h1a" style="animation-delay: 0.05s"
                 >Full Stack Developer yang</span
               ></span
             ><span class="hl"
-              ><span style="animation-delay: 0.17s"
+              ><span data-t="h1b" style="animation-delay: 0.17s"
                 >mengerjakan fitur dari</span
               ></span
             ><span class="hl"
-              ><span style="animation-delay: 0.29s"
+              ><span data-t="h1c" style="animation-delay: 0.29s"
                 >database sampai tampilan.</span
               ></span
             >
           </h1>
           <p
+            data-t="heroP"
             class="rv mt-5 max-w-[52ch] text-base text-muted sm:mt-6 sm:text-lg"
             style="transition-delay: 0.45s"
           >
@@ -474,12 +491,14 @@
             <a
               href="#proyek"
               class="inline-flex min-h-[46px] flex-1 items-center justify-center gap-2 border border-ink bg-ink px-5 py-2.5 text-sm font-semibold text-bg hover:border-accent hover:bg-accent sm:flex-none"
-              ><i data-ic="layers"></i>Lihat proyek</a
+              ><i data-ic="layers"></i
+              ><span data-t="bProj">Lihat proyek</span></a
             >
             <a
               href="#kontak"
               class="inline-flex min-h-[46px] flex-1 items-center justify-center gap-2 border border-ink px-5 py-2.5 text-sm font-semibold hover:border-accent hover:text-accent sm:flex-none"
-              ><i data-ic="mail"></i>Hubungi saya</a
+              ><i data-ic="mail"></i
+              ><span data-t="bContact">Hubungi saya</span></a
             >
           </div>
           <dl
@@ -488,15 +507,15 @@
           >
             <div>
               <dt class="flex items-center gap-1.5 text-sm text-muted">
-                <i data-ic="briefcase"></i>Pengalaman
+                <i data-ic="briefcase"></i><span data-t="tExp">Pengalaman</span>
               </dt>
               <dd class="text-2xl font-extrabold tracking-tight sm:text-3xl">
-                <span data-to="2">2</span> tahun
+                <span data-to="2">2</span> <span data-t="yrs">tahun</span>
               </dd>
             </div>
             <div>
               <dt class="flex items-center gap-1.5 text-sm text-muted">
-                <i data-ic="rocket"></i>Proyek rilis
+                <i data-ic="rocket"></i><span data-t="tProj">Proyek rilis</span>
               </dt>
               <dd class="text-2xl font-extrabold tracking-tight sm:text-3xl">
                 <span data-to="3">3</span>
@@ -518,10 +537,11 @@
       <section id="keahlian" class="border-t border-line py-10 sm:py-14">
         <h2
           class="max-w-[24ch] text-2xl font-extrabold leading-tight tracking-tight sm:text-4xl"
+          data-t="sH"
         >
           Kemampuan teknis saya
         </h2>
-        <p class="mt-3 max-w-[56ch] text-muted">
+        <p data-t="sP" class="mt-3 max-w-[56ch] text-muted">
           Saya bisa menangani sisi server, antarmuka, database, sampai
           pemasangan di server dalam satu fitur, sehingga tim tidak perlu
           menunggu serah terima antar peran.
@@ -540,10 +560,13 @@
       </section>
 
       <section id="proyek" class="border-t border-line py-10 sm:py-14">
-        <h2 class="text-2xl font-extrabold tracking-tight sm:text-4xl">
+        <h2
+          class="text-2xl font-extrabold tracking-tight sm:text-4xl"
+          data-t="pH"
+        >
           Proyek yang sudah berjalan
         </h2>
-        <p class="mt-3 max-w-[56ch] text-muted">
+        <p data-t="pP" class="mt-3 max-w-[56ch] text-muted">
           Tiga sistem yang sudah rilis dan dipakai pengguna. Buka studi kasus
           untuk melihat masalah yang dihadapi dan cara saya menyelesaikannya.
         </p>
@@ -578,9 +601,9 @@
                   type="button"
                   class="inline-flex items-center gap-1 hover:text-accent"
                 >
-                  <i data-ic="left"></i>Sebelumnya
+                  <i data-ic="left"></i><span data-t="prev">Sebelumnya</span>
                 </button>
-                <span class="text-xs font-medium text-muted"
+                <span class="text-xs font-medium text-muted" data-t="zoomHint"
                   >Klik gambar untuk memperbesar</span
                 >
                 <button
@@ -588,7 +611,7 @@
                   type="button"
                   class="inline-flex items-center gap-1 hover:text-accent"
                 >
-                  Berikutnya<i data-ic="right"></i>
+                  <span data-t="next">Berikutnya</span><i data-ic="right"></i>
                 </button>
               </div>
             </div>
@@ -599,6 +622,7 @@
       <section id="proses" class="border-t border-line py-10 sm:py-14">
         <h2
           class="max-w-[24ch] text-2xl font-extrabold leading-tight tracking-tight sm:text-4xl"
+          data-t="wH"
         >
           Cara saya mengerjakan sebuah fitur
         </h2>
@@ -618,7 +642,10 @@
       </section>
 
       <section id="faq" class="border-t border-line py-10 sm:py-14">
-        <h2 class="text-2xl font-extrabold tracking-tight sm:text-4xl">
+        <h2
+          class="text-2xl font-extrabold tracking-tight sm:text-4xl"
+          data-t="fH"
+        >
           Hal yang biasanya ingin diketahui rekruter
         </h2>
         <div
@@ -635,10 +662,11 @@
           <div>
             <h2
               class="max-w-[18ch] text-[1.7rem] font-extrabold leading-tight tracking-[-0.03em] sm:text-5xl"
+              data-t="cH"
             >
               Sedang membuka lowongan Full Stack Developer?
             </h2>
-            <p class="mt-4 max-w-[46ch] text-muted">
+            <p data-t="cP" class="mt-4 max-w-[46ch] text-muted">
               Kirim detail posisinya lewat email atau formulir ini. Saya siap
               membahas pengalaman, jadwal wawancara, dan tes teknis.
             </p>
@@ -656,7 +684,7 @@
                 type="button"
                 class="inline-flex min-h-[44px] w-full items-center justify-center gap-2 border border-ink bg-ink px-4 py-2 text-sm font-semibold text-bg hover:border-accent hover:bg-accent sm:w-auto"
               >
-                <i data-ic="copy"></i>Salin email
+                <i data-ic="copy"></i><span data-t="bCopy">Salin email</span>
               </button>
               <span id="status" class="text-sm text-muted" role="status"></span>
             </div>
@@ -666,34 +694,38 @@
             class="space-y-4 border border-line bg-surface p-4 sm:p-5"
           >
             <label class="block text-sm font-semibold"
-              >Nama Anda<input
+              ><span data-t="fN">Nama Anda</span
+              ><input
                 id="f-nama"
                 class="fld mt-1 font-normal"
                 required
                 autocomplete="name"
             /></label>
             <label class="block text-sm font-semibold"
-              >Perusahaan<input
+              ><span data-t="fC">Perusahaan</span
+              ><input
                 id="f-usaha"
                 class="fld mt-1 font-normal"
                 required
                 autocomplete="organization"
             /></label>
             <label class="block text-sm font-semibold"
-              >Posisi yang ditawarkan
+              ><span data-t="fP">Posisi yang ditawarkan</span>
               <select id="f-jenis" class="fld mt-1 font-normal">
                 <option>Full Stack Developer</option>
                 <option>Backend Developer</option>
                 <option>Frontend Developer</option>
-                <option>Lainnya</option>
+                <option data-t="oth">Lainnya</option>
               </select></label
             >
             <label class="block text-sm font-semibold"
-              >Pesan<textarea
+              ><span data-t="fM">Pesan</span
+              ><textarea
                 id="f-pesan"
                 rows="4"
                 class="fld mt-1 font-normal"
                 required
+                data-tp="fPh"
                 placeholder="Sampaikan gambaran tim, lokasi kerja, dan proses seleksinya."
               ></textarea>
             </label>
@@ -701,9 +733,9 @@
               type="submit"
               class="inline-flex min-h-[46px] w-full items-center justify-center gap-2 border border-ink bg-ink px-5 py-2.5 text-sm font-semibold text-bg hover:border-accent hover:bg-accent sm:w-auto"
             >
-              <i data-ic="mail"></i>Buat email
+              <i data-ic="mail"></i><span data-t="bMail">Buat email</span>
             </button>
-            <p class="text-xs text-muted">
+            <p data-t="fNote" class="text-xs text-muted">
               Tombol ini membuka aplikasi email Anda dengan pesan yang sudah
               terisi. Tidak ada data yang dikirim lewat situs ini.
             </p>
@@ -731,6 +763,7 @@
           id="tutup"
           type="button"
           class="absolute right-3 top-3 bg-ink px-4 py-2 text-sm font-semibold text-bg"
+          data-t="close"
         >
           Tutup
         </button>
@@ -744,6 +777,266 @@
       var reduce = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;
+
+      /* ===== Bahasa / Translate ===== */
+      var L = "id";
+      try {
+        var sv = localStorage.getItem("bhs");
+        if (sv === "en" || sv === "id") L = sv;
+      } catch (x) {}
+      var ready = false;
+      var ST = {
+        nSkill: "Skills",
+        nProj: "Projects",
+        nWork: "How I work",
+        nFaq: "FAQ",
+        nContact: "Contact",
+        h1a: "Full Stack Developer who",
+        h1b: "builds features from the",
+        h1c: "database to the interface.",
+        heroP:
+          "I'm Ramdhan, a Full Stack Developer based in Cianjur with about 2 years of experience. I have shipped a real-time monitoring dashboard, an audit system, and a service website using Laravel, Nuxt, and PostgreSQL. I also set up Ubuntu servers and automated release pipelines with GitHub Actions. I am currently open to new job opportunities.",
+        bProj: "View projects",
+        bContact: "Contact me",
+        tExp: "Experience",
+        yrs: "years",
+        tProj: "Released projects",
+        sH: "My technical skills",
+        sP: "I can handle the server side, interface, database, and server deployment within a single feature, so your team doesn't have to wait on handoffs between roles.",
+        pH: "Projects in production",
+        pP: "Three systems that have been released and are used by real users. Open a case study to see the problem I faced and how I solved it.",
+        zoomHint: "Click the image to enlarge",
+        prev: "Previous",
+        next: "Next",
+        wH: "How I build a feature",
+        fH: "What recruiters usually want to know",
+        cH: "Hiring a Full Stack Developer?",
+        cP: "Send the role details by email or through this form. I'm ready to discuss my experience, interview schedule, and technical test.",
+        bCopy: "Copy email",
+        fN: "Your name",
+        fC: "Company",
+        fP: "Position offered",
+        oth: "Other",
+        fM: "Message",
+        fPh: "Describe the team, work location, and hiring process.",
+        bMail: "Compose email",
+        fNote:
+          "This button opens your email app with a pre-filled message. No data is sent through this site.",
+        close: "Close",
+      };
+      var J = {
+        id: {
+          meta: "Portofolio Full Stack Developer dengan sekitar 2 tahun pengalaman. Proyek: dashboard monitoring real-time, sistem audit, dan website layanan. Juga menyiapkan server VPS Ubuntu dan CI/CD dengan GitHub Actions.",
+          all: "Semua",
+          of: "dari",
+          step: "Tahap",
+          alt: "Tampilan proyek ",
+          cs: "Studi kasus",
+          prob: "Masalah yang dihadapi",
+          sol: "Cara penyelesaiannya",
+          open: "Buka proyek",
+          nolink: "Link belum ditambahkan",
+          copied: "Email tersalin",
+          copyFail: "Gagal menyalin, salin manual ya.",
+          light: "Mode terang",
+          dark: "Mode gelap",
+          menuOpen: "Buka menu",
+          menuClose: "Tutup menu",
+          now: "Sekarang",
+          themeAria: "Ganti tema",
+          langAria: "Ganti bahasa ke Inggris",
+          zoomTitle: "Klik untuk memperbesar",
+          subj: "Peluang kerja: ",
+          mail: function (n, u, j, m) {
+            return (
+              "Halo Ramdhan,\n\nSaya " +
+              n +
+              " dari " +
+              u +
+              ". Kami membuka posisi: " +
+              j +
+              ".\n\n" +
+              m +
+              "\n\nTerima kasih."
+            );
+          },
+        },
+        en: {
+          meta: "Portfolio of a Full Stack Developer with about 2 years of experience. Projects: a real-time monitoring dashboard, an audit system, and a service website. Also sets up Ubuntu VPS servers and CI/CD with GitHub Actions.",
+          all: "All",
+          of: "of",
+          step: "Step",
+          alt: "Project preview: ",
+          cs: "Case study",
+          prob: "The problem",
+          sol: "How I solved it",
+          open: "Open project",
+          nolink: "Link not added yet",
+          copied: "Email copied",
+          copyFail: "Copy failed, please copy it manually.",
+          light: "Light mode",
+          dark: "Dark mode",
+          menuOpen: "Open menu",
+          menuClose: "Close menu",
+          now: "Now",
+          themeAria: "Toggle theme",
+          langAria: "Switch language to Indonesian",
+          zoomTitle: "Click to enlarge",
+          subj: "Job opportunity: ",
+          mail: function (n, u, j, m) {
+            return (
+              "Hello Ramdhan,\n\nI'm " +
+              n +
+              " from " +
+              u +
+              ". We have an opening for: " +
+              j +
+              ".\n\n" +
+              m +
+              "\n\nThank you."
+            );
+          },
+        },
+      };
+      var EN = {
+        projects: [
+          {
+            desc: "A cloud-based monitoring system that displays data from 14 sensors across several regions: AWLR (water level), AWS (weather station), and ARR (rainfall). All sensors can be monitored and operated remotely.",
+            masalah:
+              "Data is spread across many sensors and locations, while officers need to see current conditions without going to the field.",
+            solusi:
+              "A single dashboard that receives data over WebSocket so values update without reloading the page, complete with remote sensor control.",
+          },
+          {
+            desc: "A Bali travel service website that introduces packages and services so prospective travelers can easily find information and contact the provider.",
+            masalah:
+              "Travel service providers need an online storefront that is clear, fast to load, and comfortable to read on a phone.",
+            solusi:
+              "A website with a simple information structure: services, packages, and an easy-to-find contact path.",
+          },
+          {
+            desc: "A web application for managing the audit process, from recording findings to follow-up, so the status of every finding can be traced in one place.",
+            masalah:
+              "Audit records kept separately make it hard to trace findings and their follow-up.",
+            solusi:
+              "A centralized flow from recording findings to follow-up, with a responsive Nuxt interface and a PostgreSQL database.",
+          },
+          {
+            desc: "A web application that displays tourism information for a village, including destinations, services, and contact information.",
+            masalah:
+              "Tourism information is scattered across many sources, making it hard for visitors to find what they need.",
+            solusi:
+              "A centralized tourism information system that displays destinations, services, and contact information through a Laravel interface.",
+          },
+        ],
+        skills: [
+          {
+            j: "Stable business logic and APIs",
+            t: "I build the server side with Laravel (PHP) and Java Spring Boot: authentication, access control, APIs, and data processing that match your organization's workflow.",
+            a: [
+              "Laravel and PHP",
+              "Java Spring Boot",
+              "REST API",
+              "WebSocket for real-time data",
+            ],
+          },
+          {
+            j: "Fast, clear interfaces",
+            t: "Interfaces are built with Vue/Nuxt, Alpine.js, and Tailwind CSS. The focus is on lightweight pages that feel good on a phone and don't confuse their users.",
+            a: [
+              "Vue and Nuxt.js",
+              "Alpine.js",
+              "Tailwind CSS and Bootstrap",
+              "Responsive design",
+            ],
+          },
+          {
+            j: "Organized, traceable data",
+            t: "I design data structures and relationships with PostgreSQL and MySQL, so reports stay accurate and the system is easy to extend as needs grow.",
+            a: [
+              "PostgreSQL",
+              "MySQL",
+              "ERD design",
+              "Migrations and data relations",
+            ],
+          },
+          {
+            j: "From code to running on the server",
+            t: "I set up Ubuntu VPS servers myself: installing and configuring Nginx, PHP, Node.js, and other server requirements. I automate releases with GitHub Actions, so every code change is deployed to the server in a clean, repeatable way.",
+            a: [
+              "Ubuntu VPS",
+              "Nginx",
+              "PHP and Node.js",
+              "CI/CD with GitHub Actions",
+              "Git and GitHub",
+            ],
+          },
+          {
+            j: "Faster development, quality intact",
+            t: "I use AI assistants as a working partner to speed up repetitive work: scaffolding code, designing queries, drafting tests, and tracing the cause of bugs. I review, test, and adapt every result to the project's standards, so development time is shorter without compromising code quality.",
+            a: [
+              "Pair programming with an AI assistant",
+              "Faster code scaffolding and queries",
+              "Error analysis and debugging",
+              "Test drafts and documentation",
+              "Manual review before release",
+            ],
+          },
+        ],
+        proses: [
+          [
+            "Understanding the need",
+            "I start from the problem users want to solve, then ask about anything unclear before building anything.",
+          ],
+          [
+            "Designing flow and data",
+            "I design the workflow and database structure first, so the feature has a clear foundation and is easy to extend.",
+          ],
+          [
+            "Building in stages with AI",
+            "Features are built in small, testable parts, so feedback from the team or users comes in early. I use AI assistants to speed up repetitive work such as code scaffolding, queries, and test drafts, which shortens development time. I still review and understand every result myself before using it.",
+          ],
+          [
+            "Testing and release",
+            "I test the main flow with users, then release to the VPS through an automated GitHub Actions pipeline, and keep maintaining the system after it goes live.",
+          ],
+        ],
+        faq: [
+          [
+            "What position am I looking for?",
+            "Full Stack Developer, or a Backend or Frontend role that fits my experience with Laravel, Spring Boot, and Vue/Nuxt.",
+          ],
+          [
+            "Which technologies do I use?",
+            "Laravel and Java Spring Boot on the server side, Vue/Nuxt, Alpine.js, and Tailwind CSS on the interface, and PostgreSQL and MySQL for databases. For deployment, I set up Ubuntu VPS servers (Nginx, PHP, Node.js) and CI/CD with GitHub Actions.",
+          ],
+          [
+            "What is my work experience so far?",
+            "About 2 years, with three released systems at three companies: SWOM (CV. Erha Putra Perkasa), Bali Trip Center (Entercode), and Audit Management System (PT. Pragma Informatika).",
+          ],
+          [
+            "When and how can I be reached?",
+            "By email or the form below. Work location, start date, and interview schedule can be discussed directly.",
+          ],
+        ],
+      };
+      function PJ(i) {
+        return L === "en"
+          ? Object.assign({}, projects[i], EN.projects[i])
+          : projects[i];
+      }
+      function SK(i) {
+        return L === "en"
+          ? Object.assign({}, skills[i], EN.skills[i])
+          : skills[i];
+      }
+      function PR() {
+        return L === "en" ? EN.proses : proses;
+      }
+      function FQ() {
+        return L === "en" ? EN.faq : faq;
+      }
+
       var IC = {
         server:
           '<rect x="2" y="3" width="20" height="8" rx="1"/><rect x="2" y="13" width="20" height="8" rx="1"/><path d="M6 7h.01M6 17h.01"/>',
@@ -777,7 +1070,10 @@
         right: '<path d="m9 18 6-6-6-6"/>',
         menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
         x: '<path d="M18 6 6 18M6 6l12 12"/>',
-        spark: '<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3ZM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z"/>',
+        globe:
+          '<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/>',
+        spark:
+          '<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3ZM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z"/>',
       };
       function ic(n, c, z) {
         return (
@@ -793,7 +1089,13 @@
       [].forEach.call(document.querySelectorAll("[data-ic]"), function (el) {
         el.outerHTML = ic(el.dataset.ic, el.className);
       });
-      var sIc = { Backend: "server", Frontend: "layout", Database: "database", DevOps: "terminal", "AI Assistant": "spark" },
+      var sIc = {
+          Backend: "server",
+          Frontend: "layout",
+          Database: "database",
+          DevOps: "terminal",
+          "AI Assistant": "spark",
+        },
         pIc = ["message", "branch", "code", "rocket"];
 
       /* ===== DATA: ubah isi di sini ===== */
@@ -839,6 +1141,18 @@
           tags: ["Laravel", "Nuxt.js", "PostgreSQL"],
           url: "https://auditrek.id/",
           shot: "/assets/img/audit.png",
+        },
+        {
+          nama: "Sistem Informasi Wisata Desa Sukarame",
+          meta: "Jabar Digital Academy",
+          desc: "Aplikasi web untuk mengelola informasi wisata desa Sukarame, memudahkan pengunjung menemukan destinasi dan layanan yang tersedia.",
+          masalah:
+            "Informasi wisata desa tersebar di berbagai tempat, membuat pengunjung kesulitan menemukan data yang relevan.",
+          solusi:
+            "Sebuah sistem informasi terpusat yang menampilkan destinasi wisata, layanan, dan kontak yang mudah diakses melalui antarmuka Laravel.",
+          tags: ["Laravel", "Tailwind CSS", "MySQL"],
+          url: "",
+          shot: "/assets/img/sukarame.jpg",
         },
       ];
       var skills = [
@@ -891,7 +1205,13 @@
           k: "AI Assistant",
           j: "Pengembangan lebih cepat, kualitas tetap terjaga",
           t: "Saya memakai asisten AI sebagai rekan kerja untuk mempercepat pekerjaan berulang: menyusun kerangka kode, merancang query, menulis draf pengujian, dan menelusuri penyebab bug. Setiap hasilnya saya tinjau, uji, dan sesuaikan dengan standar proyek, sehingga masa pengembangan lebih singkat tanpa mengorbankan kualitas kode.",
-          a: ["Pair programming dengan asisten AI", "Kerangka kode dan query lebih cepat", "Analisis error dan debugging", "Draf pengujian dan dokumentasi", "Tinjauan manual sebelum rilis"],
+          a: [
+            "Pair programming dengan asisten AI",
+            "Kerangka kode dan query lebih cepat",
+            "Analisis error dan debugging",
+            "Draf pengujian dan dokumentasi",
+            "Tinjauan manual sebelum rilis",
+          ],
         },
       ];
       var proses = [
@@ -903,7 +1223,10 @@
           "Merancang alur dan data",
           "Alur kerja dan struktur database saya rancang lebih dulu, sehingga fitur punya fondasi yang jelas dan mudah dikembangkan.",
         ],
-        ["Membangun bertahap", "Fitur dikerjakan per bagian kecil dan siap dicoba, jadi masukan dari tim atau pengguna masuk lebih awal. Saya memakai asisten AI untuk mempercepat pekerjaan berulang seperti kerangka kode, query, dan draf pengujian, sehingga masa pengembangan lebih singkat. Semua hasilnya tetap saya tinjau dan pahami sendiri sebelum dipakai."],
+        [
+          "Membangun bertahap dengan AI",
+          "Fitur dikerjakan per bagian kecil dan siap dicoba, jadi masukan dari tim atau pengguna masuk lebih awal. Saya memakai asisten AI untuk mempercepat pekerjaan berulang seperti kerangka kode, query, dan draf pengujian, sehingga masa pengembangan lebih singkat. Semua hasilnya tetap saya tinjau dan pahami sendiri sebelum dipakai.",
+        ],
         [
           "Uji dan rilis",
           "Saya menguji alur utama bersama pengguna, lalu merilis ke VPS lewat alur otomatis GitHub Actions dan tetap merawat sistem setelah dipakai.",
@@ -955,6 +1278,7 @@
         };
       }
       /* ===== Keahlian ===== */
+      var kCur = 0;
       var kset = tabs(
         $("k-tabs"),
         skills.map(function (s) {
@@ -962,6 +1286,7 @@
         }),
         0,
         function (i) {
+          kCur = i;
           kset(i);
           isiK(i);
         },
@@ -971,7 +1296,7 @@
         anim($("k-isi"));
       }
       function isiK0(i) {
-        var s = skills[i];
+        var s = SK(i);
         $("k-isi").innerHTML =
           "<div>" +
           ic(sIc[s.k], "mb-3 block text-accent", 2.25) +
@@ -1027,7 +1352,7 @@
       }
       function bukaZoom(i) {
         pasang(zoomImg, projects[i]);
-        zoomImg.alt = "Tampilan proyek " + projects[i].nama;
+        zoomImg.alt = J[L].alt + projects[i].nama;
         if (zoom.showModal) zoom.showModal();
       }
       function pilih(i) {
@@ -1039,10 +1364,11 @@
         pvImg.style.opacity = 0;
         setTimeout(function () {
           pasang(pvImg, projects[i]);
-          pvImg.alt = "Tampilan proyek " + projects[i].nama;
+          pvImg.alt = J[L].alt + projects[i].nama;
           $("pv-label").textContent = projects[i].nama;
           var t = tampak();
-          $("pv-hitung").textContent = t.indexOf(i) + 1 + " dari " + t.length;
+          $("pv-hitung").textContent =
+            t.indexOf(i) + 1 + " " + J[L].of + " " + t.length;
           pvImg.style.opacity = 1;
         }, 120);
       }
@@ -1052,77 +1378,91 @@
         var n = t.indexOf(aktif);
         pilih(t[(n + d + t.length) % t.length]);
       }
-      projects.forEach(function (p, i) {
-        var li = document.createElement("li");
-        li.tabIndex = 0;
-        li.dataset.on = "false";
-        li.className =
-          "group cursor-pointer border-l-4 border-transparent pl-4 data-[on=true]:border-accent sm:pl-5";
-        li.innerHTML =
-          '<h3 class="text-xl font-extrabold tracking-tight text-ink sm:text-2xl lg:text-muted lg:group-hover:text-ink lg:group-data-[on=true]:text-ink">' +
-          p.nama +
-          '</h3><p class="flex items-center gap-1.5 text-sm text-muted">' +
-          ic("building") +
-          p.meta +
-          "</p>" +
-          '<img class="mt-4 block aspect-[16/10] w-full cursor-zoom-in border border-line object-cover lg:hidden" alt="Tampilan proyek ' +
-          p.nama +
-          '">' +
-          '<p class="mt-4 max-w-[54ch]">' +
-          p.desc +
-          "</p>" +
-          '<ul class="mt-3 flex flex-wrap gap-1.5 text-xs font-semibold text-muted">' +
-          p.tags
-            .map(function (t) {
-              return (
-                '<li class="inline-flex items-center gap-1 border border-line px-2 py-0.5">' +
-                ic("code") +
-                t +
-                "</li>"
-              );
-            })
-            .join("") +
-          "</ul>" +
-          '<details class="mt-3 max-w-[54ch]"><summary class="u inline-flex min-h-[44px] items-center text-sm font-semibold sm:min-h-0">Studi kasus <span class="plus ml-1">+</span></summary><dl class="mt-3 space-y-3 text-sm"><div><dt class="font-bold">Masalah yang dihadapi</dt><dd class="text-muted">' +
-          p.masalah +
-          '</dd></div><div><dt class="font-bold">Cara penyelesaiannya</dt><dd class="text-muted">' +
-          p.solusi +
-          "</dd></div></dl></details>" +
-          '<p class="mt-2 sm:mt-3">' +
-          (p.url
-            ? '<a class="u inline-flex min-h-[44px] items-center gap-1.5 text-sm font-semibold sm:min-h-0" href="' +
-              p.url +
-              '" target="_blank" rel="noopener">Buka proyek' +
-              ic("ext") +
-              "</a>"
-            : '<span class="text-sm text-muted">Link belum ditambahkan</span>') +
-          "</p>";
-        pasang(li.querySelector("img"), p);
-        ["mouseenter", "focusin", "click"].forEach(function (ev) {
-          li.addEventListener(ev, function () {
-            pilih(i);
+      function bangunProyek() {
+        daftar.innerHTML = "";
+        projects.forEach(function (p0, i) {
+          var p = PJ(i);
+          var li = document.createElement("li");
+          li.tabIndex = 0;
+          li.dataset.on = "false";
+          li.className =
+            "group cursor-pointer border-l-4 border-transparent pl-4 data-[on=true]:border-accent sm:pl-5";
+          li.innerHTML =
+            '<h3 class="text-xl font-extrabold tracking-tight text-ink sm:text-2xl lg:text-muted lg:group-hover:text-ink lg:group-data-[on=true]:text-ink">' +
+            p.nama +
+            '</h3><p class="flex items-center gap-1.5 text-sm text-muted">' +
+            ic("building") +
+            p.meta +
+            "</p>" +
+            '<img class="mt-4 block aspect-[16/10] w-full cursor-zoom-in border border-line object-cover lg:hidden" alt="' +
+            J[L].alt +
+            p.nama +
+            '">' +
+            '<p class="mt-4 max-w-[54ch]">' +
+            p.desc +
+            "</p>" +
+            '<ul class="mt-3 flex flex-wrap gap-1.5 text-xs font-semibold text-muted">' +
+            p.tags
+              .map(function (t) {
+                return (
+                  '<li class="inline-flex items-center gap-1 border border-line px-2 py-0.5">' +
+                  ic("code") +
+                  t +
+                  "</li>"
+                );
+              })
+              .join("") +
+            "</ul>" +
+            '<details class="mt-3 max-w-[54ch]"><summary class="u inline-flex min-h-[44px] items-center text-sm font-semibold sm:min-h-0">' +
+            J[L].cs +
+            ' <span class="plus ml-1">+</span></summary><dl class="mt-3 space-y-3 text-sm"><div><dt class="font-bold">' +
+            J[L].prob +
+            '</dt><dd class="text-muted">' +
+            p.masalah +
+            '</dd></div><div><dt class="font-bold">' +
+            J[L].sol +
+            '</dt><dd class="text-muted">' +
+            p.solusi +
+            "</dd></div></dl></details>" +
+            '<p class="mt-2 sm:mt-3">' +
+            (p.url
+              ? '<a class="u inline-flex min-h-[44px] items-center gap-1.5 text-sm font-semibold sm:min-h-0" href="' +
+                p.url +
+                '" target="_blank" rel="noopener">' +
+                J[L].open +
+                ic("ext") +
+                "</a>"
+              : '<span class="text-sm text-muted">' + J[L].nolink + "</span>") +
+            "</p>";
+          pasang(li.querySelector("img"), p);
+          ["mouseenter", "focusin", "click"].forEach(function (ev) {
+            li.addEventListener(ev, function () {
+              pilih(i);
+            });
           });
+          li.querySelector("img").addEventListener("click", function () {
+            bukaZoom(i);
+          });
+          li.addEventListener("keydown", function (e) {
+            if (e.target !== li) return;
+            var d = e.key === "ArrowDown" ? 1 : e.key === "ArrowUp" ? -1 : 0;
+            if (!d) return;
+            e.preventDefault();
+            var t = tampak(),
+              n = t.indexOf(i);
+            daftar.children[t[(n + d + t.length) % t.length]].focus();
+          });
+          if (ready) li.className += " rv in";
+          daftar.appendChild(li);
         });
-        li.querySelector("img").addEventListener("click", function () {
-          bukaZoom(i);
-        });
-        li.addEventListener("keydown", function (e) {
-          if (e.target !== li) return;
-          var d = e.key === "ArrowDown" ? 1 : e.key === "ArrowUp" ? -1 : 0;
-          if (!d) return;
-          e.preventDefault();
-          var t = tampak(),
-            n = t.indexOf(i);
-          daftar.children[t[(n + d + t.length) % t.length]].focus();
-        });
-        daftar.appendChild(li);
-      });
+      }
+      bangunProyek();
       var tagSemua = ["Semua", "Laravel", "PostgreSQL", "Nuxt.js"];
       tagSemua.forEach(function (t) {
         var b = document.createElement("button");
         b.type = "button";
         b.className = "chip";
-        b.textContent = t;
+        b.textContent = t === "Semua" ? J[L].all : t;
         b.setAttribute("aria-pressed", t === "Semua");
         b.addEventListener("click", function () {
           saring = t;
@@ -1175,17 +1515,23 @@
       }
 
       /* ===== Cara kerja ===== */
-      var pset = tabs(
-        $("p-tabs"),
-        proses.map(function (p, i) {
-          return ic(pIc[i]) + (i + 1) + ". " + p[0];
-        }),
-        0,
-        function (i) {
-          pset(i);
-          isiP(i);
-        },
-      );
+      var pCur = 0,
+        pset;
+      function bangunProses() {
+        pset = tabs(
+          $("p-tabs"),
+          PR().map(function (p, i) {
+            return ic(pIc[i]) + (i + 1) + ". " + p[0];
+          }),
+          0,
+          function (i) {
+            pCur = i;
+            pset(i);
+            isiP(i);
+          },
+        );
+        pset(pCur);
+      }
       function isiP(i) {
         isiP0(i);
         anim($("p-isi"));
@@ -1194,50 +1540,53 @@
         $("p-isi").innerHTML =
           ic(pIc[i], "mb-3 block text-accent", 2.25) +
           '<h3 class="text-xl font-extrabold tracking-tight sm:text-2xl">' +
-          proses[i][0] +
+          PR()[i][0] +
           '</h3><p class="mt-3 max-w-[54ch] text-muted">' +
-          proses[i][1] +
-          '</p><p class="mt-4 text-sm font-semibold">Tahap ' +
+          PR()[i][1] +
+          '</p><p class="mt-4 text-sm font-semibold">' +
+          J[L].step +
+          " " +
           (i + 1) +
-          " dari " +
+          " " +
+          J[L].of +
+          " " +
           proses.length +
           "</p>";
       }
-      pset(0);
+      bangunProses();
       isiP(0);
 
       /* ===== FAQ ===== */
-      $("faq-isi").innerHTML = faq
-        .map(function (f) {
-          return (
-            '<details class="py-3 sm:py-4"><summary class="flex min-h-[44px] items-center justify-between gap-4 text-base font-bold sm:text-lg"><span class="flex items-center gap-3">' +
-            ic("help", "text-accent") +
-            f[0] +
-            '</span><span class="plus text-2xl text-accent">+</span></summary><p class="mt-3 max-w-[60ch] text-muted">' +
-            f[1] +
-            "</p></details>"
-          );
-        })
-        .join("");
+      function bangunFaq() {
+        $("faq-isi").innerHTML = FQ()
+          .map(function (f) {
+            return (
+              '<details class="py-3 sm:py-4"><summary class="flex min-h-[44px] items-center justify-between gap-4 text-base font-bold sm:text-lg"><span class="flex items-center gap-3">' +
+              ic("help", "text-accent") +
+              f[0] +
+              '</span><span class="plus text-2xl text-accent">+</span></summary><p class="mt-3 max-w-[60ch] text-muted">' +
+              f[1] +
+              "</p></details>"
+            );
+          })
+          .join("");
+      }
+      bangunFaq();
 
       /* ===== Form, salin email, tema, jam, progres ===== */
       $("form").addEventListener("submit", function (e) {
         e.preventDefault();
-        var isi =
-          "Halo Ramdhan,\n\nSaya " +
-          $("f-nama").value +
-          " dari " +
-          $("f-usaha").value +
-          ". Kami membuka posisi: " +
-          $("f-jenis").value +
-          ".\n\n" +
-          $("f-pesan").value +
-          "\n\nTerima kasih.";
+        var isi = J[L].mail(
+          $("f-nama").value,
+          $("f-usaha").value,
+          $("f-jenis").value,
+          $("f-pesan").value,
+        );
         location.href =
           "mailto:" +
           $("email").textContent +
           "?subject=" +
-          encodeURIComponent("Peluang kerja: " + $("f-jenis").value) +
+          encodeURIComponent(J[L].subj + $("f-jenis").value) +
           "&body=" +
           encodeURIComponent(isi);
       });
@@ -1246,14 +1595,14 @@
         try {
           navigator.clipboard.writeText($("email").textContent).then(
             function () {
-              s.textContent = "Email tersalin";
+              s.textContent = J[L].copied;
             },
             function () {
-              s.textContent = "Gagal menyalin, salin manual ya.";
+              s.textContent = J[L].copyFail;
             },
           );
         } catch (x) {
-          s.textContent = "Gagal menyalin, salin manual ya.";
+          s.textContent = J[L].copyFail;
         }
         setTimeout(function () {
           s.textContent = "";
@@ -1261,8 +1610,9 @@
       });
       function jam() {
         $("jam").textContent =
-          "Sekarang " +
-          new Intl.DateTimeFormat("id-ID", {
+          J[L].now +
+          " " +
+          new Intl.DateTimeFormat(L === "en" ? "en-GB" : "id-ID", {
             hour: "2-digit",
             minute: "2-digit",
             hour12: false,
@@ -1279,7 +1629,7 @@
         tb.innerHTML =
           ic(t === "dark" ? "sun" : "moon") +
           '<span class="hidden sm:inline">' +
-          (t === "dark" ? "Mode terang" : "Mode gelap") +
+          (t === "dark" ? J[L].light : J[L].dark) +
           "</span>";
       }
       setTema("light");
@@ -1306,7 +1656,7 @@
         iMenu.style.display = o ? "none" : "block";
         iX.style.display = o ? "block" : "none";
         mb.setAttribute("aria-expanded", o);
-        mb.setAttribute("aria-label", o ? "Tutup menu" : "Buka menu");
+        mb.setAttribute("aria-label", o ? J[L].menuClose : J[L].menuOpen);
       }
       setMenu(false);
       mb.addEventListener("click", function () {
@@ -1382,6 +1732,65 @@
         })
         .join("");
 
+      /* ===== Terapkan bahasa ===== */
+      var bhs = $("bhs");
+      function setLangBtn() {
+        bhs.innerHTML =
+          ic("globe") +
+          '<span class="text-xs font-bold">' +
+          (L === "en" ? "ID" : "EN") +
+          "</span>";
+        bhs.setAttribute("aria-label", J[L].langAria);
+      }
+      function applyLang() {
+        document.documentElement.lang = L;
+        var md = document.querySelector('meta[name="description"]');
+        if (md) md.setAttribute("content", J[L].meta);
+        [].forEach.call(document.querySelectorAll("[data-t]"), function (el) {
+          if (el.dataset.id === undefined) el.dataset.id = el.innerHTML;
+          var v =
+            L === "en" && ST[el.dataset.t] ? ST[el.dataset.t] : el.dataset.id;
+          if (el.innerHTML !== v) el.innerHTML = v;
+        });
+        [].forEach.call(document.querySelectorAll("[data-tp]"), function (el) {
+          if (el.dataset.idp === undefined)
+            el.dataset.idp = el.getAttribute("placeholder");
+          el.setAttribute(
+            "placeholder",
+            L === "en" ? ST[el.dataset.tp] : el.dataset.idp,
+          );
+        });
+        setLangBtn();
+        tb.setAttribute("aria-label", J[L].themeAria);
+        setTema(root.getAttribute("data-theme"));
+        setMenu(!mn.hidden);
+        $("chips").children[0].textContent = J[L].all;
+        pvImg.title = J[L].zoomTitle;
+        isiK0(kCur);
+        bangunProses();
+        isiP0(pCur);
+        bangunFaq();
+        bangunProyek();
+        Array.prototype.forEach.call(daftar.children, function (li, n) {
+          li.hidden = tampak().indexOf(n) < 0;
+        });
+        if (aktif > -1) {
+          var a = aktif;
+          aktif = -1;
+          pilih(a);
+        }
+        jam();
+      }
+      bhs.addEventListener("click", function () {
+        L = L === "en" ? "id" : "en";
+        try {
+          localStorage.setItem("bhs", L);
+        } catch (x) {}
+        applyLang();
+      });
+      if (L === "en") applyLang();
+      else setLangBtn();
+
       /* ===== Animasi ===== */
       function anim(el) {
         if (reduce) return;
@@ -1454,6 +1863,7 @@
       ["keahlian", "proyek", "proses", "faq", "kontak"].forEach(function (id) {
         spy.observe($(id));
       });
+      ready = true;
     </script>
   </body>
 </html>
