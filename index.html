@@ -1,24 +1,226 @@
 <!DOCTYPE html>
-<html lang="">
-
+<html lang="id" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Asap+Sharp:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-
-    <title>Ramdhan Nassyirah</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ramdhan Nassyirah, Full Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config = { theme: { extend: {
+  colors: { bg:'var(--bg)', surface:'var(--surface)', ink:'var(--ink)', muted:'var(--muted)', line:'var(--line)', accent:'var(--accent)' },
+  fontFamily: { sans:['"Plus Jakarta Sans"','system-ui','sans-serif'] }
+} } }
+</script>
+<style>
+  :root{color-scheme:light;--bg:#F3F4F1;--surface:#FFFFFF;--ink:#1B1F23;--muted:#5A615C;--line:#D3D7D1;--accent:#0B6B4D;
+    box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+  :root[data-theme="dark"]{color-scheme:dark;--bg:#121512;--surface:#1A1E1A;--ink:#ECEFEA;--muted:#9BA39C;--line:#2E342E;--accent:#5FD0A5}
+  html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 4rem)}
+  body{background:var(--bg);color:var(--ink)}
+  .u{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+  .u:hover{color:var(--accent)}
+  a:focus-visible,button:focus-visible,li:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  #pv{transition:transform .12s;transform-style:preserve-3d}
+  #pv-img{transition:opacity .15s;cursor:zoom-in}
+  dialog{padding:0;border:0;background:transparent;max-width:min(94vw,1100px);width:100%}
+  dialog::backdrop{background:rgba(0,0,0,.72)}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
 </head>
+<body class="font-sans text-base leading-7 antialiased">
 
-<body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+<header class="sticky z-20 border-b border-line bg-bg" style="top:env(safe-area-inset-top,0px)">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5">
+    <a href="#atas" class="text-base font-extrabold tracking-tight">Ramdhan</a>
+    <nav class="flex items-center gap-5 text-sm font-semibold">
+      <a href="#proyek" class="u">Proyek</a>
+      <a href="#kontak" class="u">Kontak</a>
+      <button id="tema" type="button" class="u text-sm font-semibold">Mode gelap</button>
+    </nav>
+  </div>
+</header>
+
+<main id="atas" class="mx-auto max-w-6xl px-5">
+
+  <section class="py-16 md:py-24">
+    <h1 class="max-w-4xl text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] sm:text-6xl lg:text-7xl">
+      Halo, saya Ramdhan. Saya Full Stack Developer.
+    </h1>
+    <div class="mt-10 grid gap-3 text-muted md:grid-cols-[auto_1fr] md:gap-x-12">
+      <p>Full Stack Developer, sekitar 2 tahun pengalaman.</p>
+      <p>Laravel, Java Spring Boot, Vue/Nuxt, PostgreSQL, MySQL.</p>
+      <p id="jam" class="text-sm"></p>
+    </div>
+  </section>
+
+  <section id="proyek" class="border-t border-line py-14">
+    <h2 class="text-3xl font-extrabold tracking-tight">Proyek</h2>
+
+    <div class="mt-10 grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
+      <ul id="daftar" class="space-y-10"></ul>
+
+      <div class="hidden lg:block">
+        <div class="sticky" style="top:calc(env(safe-area-inset-top,0px) + 5.5rem)">
+          <figure id="pv" class="border border-line bg-surface">
+            <figcaption class="flex items-center justify-between border-b border-line px-4 py-2 text-xs font-semibold text-muted">
+              <span id="pv-label"></span><span id="pv-hitung"></span>
+            </figcaption>
+            <img id="pv-img" alt="" class="block aspect-[16/10] w-full object-cover" title="Klik untuk memperbesar">
+          </figure>
+          <div class="mt-3 flex items-center justify-between text-sm font-semibold">
+            <button id="sebelum" type="button" class="u">Sebelumnya</button>
+            <span class="text-xs font-medium text-muted">Klik gambar untuk memperbesar</span>
+            <button id="sesudah" type="button" class="u">Berikutnya</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontak" class="border-t border-line py-14 pb-20">
+    <h2 class="max-w-[20ch] text-3xl font-extrabold leading-tight tracking-[-0.03em] sm:text-5xl">Punya proyek yang mau dibangun?</h2>
+    <p class="mt-4 max-w-[46ch] text-muted">Kirim email dan ceritakan kebutuhan Anda.</p>
+    <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
+      <span id="email" class="text-lg font-bold">ramdhannassyirahh@gmail.com</span>
+      <button id="salin" type="button" class="border border-ink bg-ink px-4 py-2 text-sm font-semibold text-bg hover:border-accent hover:bg-accent">Salin email</button>
+      <span id="status" class="text-sm text-muted" role="status"></span>
+    </div>
+  </section>
+</main>
+
+<footer class="border-t border-line">
+  <p class="mx-auto max-w-6xl px-5 py-6 text-sm text-muted">R M Ramdhan Nassyirah, Cianjur.</p>
+</footer>
+
+<dialog id="zoom" aria-label="Gambar proyek diperbesar">
+  <div class="relative">
+    <img id="zoom-img" alt="" class="block w-full border border-line bg-surface">
+    <button id="tutup" type="button" class="absolute right-3 top-3 bg-ink px-3 py-1.5 text-sm font-semibold text-bg">Tutup</button>
+  </div>
+</dialog>
+
+<script>
+  // Isi data proyek di sini. url: link proyek. shot: gambar (data URI). Jika kosong, tampil gambar pengganti.
+  var projects = [
+    { nama: 'SWOM', meta: 'CV. Erha Putra Perkasa',
+      desc: 'Sistem monitoring berbasis cloud yang menampilkan data 14 sensor dari beberapa wilayah: AWLR (tinggi muka air), AWS (stasiun cuaca), dan ARR (curah hujan). Semua sensor bisa dipantau dan dioperasikan dari jarak jauh.',
+      tags: 'Laravel, Alpine Js, Tailwind CSS, PostgreSQL, Web Socket', url: 'https://swompjt2-uw6.info/', shot: '/assets/img/swom.png' },
+    { nama: 'Bali Trip Center', meta: 'Entercode',
+      desc: 'Website layanan perjalanan wisata ke Bali.',
+      tags: 'Laravel, Bootstrap', url: 'https://balitripcenter.com/', shot: '/assets/img/bali.png' },
+    { nama: 'Audit Management System', meta: 'PT. Pragma Informatika',
+      desc: 'Aplikasi web untuk mengelola proses audit, dari pencatatan temuan sampai tindak lanjutnya.',
+      tags: 'Laravel, Nuxt.js, PostgreSQL', url: 'https://auditrek.id/', shot: '/assets/img/audit.png' }
+  ];
+
+  function pengganti(nama) {
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800">' +
+      '<rect width="1280" height="800" fill="#E6E8E3"/><rect width="1280" height="64" fill="#D3D7D1"/>' +
+      '<rect y="64" width="220" height="736" fill="#DADED8"/>' +
+      '<rect x="260" y="104" width="300" height="150" fill="#F3F4F1"/><rect x="590" y="104" width="300" height="150" fill="#F3F4F1"/><rect x="920" y="104" width="300" height="150" fill="#F3F4F1"/>' +
+      '<rect x="260" y="290" width="960" height="330" fill="#F3F4F1"/>' +
+      '<polyline points="290,570 400,500 510,530 620,430 730,460 840,370 950,400 1060,330 1190,350" fill="none" stroke="#0B6B4D" stroke-width="5"/>' +
+      '<text x="640" y="700" text-anchor="middle" font-family="Arial,sans-serif" font-size="34" fill="#5A615C">' + nama + '</text>' +
+      '<text x="640" y="745" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" fill="#5A615C">Screenshot belum ditambahkan</text></svg>';
+    return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+  }
+  projects.forEach(function (p) { p.src = p.shot || pengganti(p.nama); });
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var daftar = document.getElementById('daftar'), pvImg = document.getElementById('pv-img');
+  var pvLabel = document.getElementById('pv-label'), pvHitung = document.getElementById('pv-hitung');
+  var zoom = document.getElementById('zoom'), zoomImg = document.getElementById('zoom-img');
+  var aktif = -1;
+
+  function bukaZoom(i) {
+    zoomImg.src = projects[i].src; zoomImg.alt = 'Tampilan proyek ' + projects[i].nama;
+    if (zoom.showModal) zoom.showModal();
+  }
+  function pilih(i) {
+    i = (i + projects.length) % projects.length;
+    if (i === aktif) return;
+    aktif = i;
+    document.querySelectorAll('#daftar > li').forEach(function (li, n) { li.dataset.on = (n === i); });
+    pvImg.style.opacity = 0;
+    setTimeout(function () {
+      pvImg.src = projects[i].src; pvImg.alt = 'Tampilan proyek ' + projects[i].nama;
+      pvLabel.textContent = projects[i].nama; pvHitung.textContent = (i + 1) + ' dari ' + projects.length;
+      pvImg.style.opacity = 1;
+    }, 120);
+  }
+
+  projects.forEach(function (p, i) {
+    var li = document.createElement('li');
+    li.tabIndex = 0; li.dataset.on = 'false';
+    li.className = 'group cursor-pointer border-l-4 border-transparent pl-5 data-[on=true]:border-accent';
+    var tautan = p.url
+      ? '<a class="u text-sm font-semibold" href="' + p.url + '" target="_blank" rel="noopener">Buka proyek</a>'
+      : '<span class="text-sm text-muted">Link belum ditambahkan</span>';
+    li.innerHTML =
+      '<h3 class="text-2xl font-extrabold tracking-tight text-muted group-hover:text-ink group-data-[on=true]:text-ink">' + p.nama + '</h3>' +
+      (p.meta ? '<p class="text-sm text-muted">' + p.meta + '</p>' : '') +
+      '<img class="mt-4 block aspect-[16/10] w-full cursor-zoom-in border border-line object-cover lg:hidden" alt="Tampilan proyek ' + p.nama + '" src="' + p.src + '">' +
+      '<p class="mt-4 max-w-[54ch]">' + p.desc + '</p>' +
+      (p.tags ? '<p class="mt-2 text-sm text-muted">' + p.tags + '</p>' : '') +
+      '<p class="mt-3">' + tautan + '</p>';
+    ['mouseenter', 'focusin', 'click'].forEach(function (ev) { li.addEventListener(ev, function () { pilih(i); }); });
+    li.querySelector('img').addEventListener('click', function () { bukaZoom(i); });
+    li.addEventListener('keydown', function (e) {
+      var n = e.key === 'ArrowDown' ? i + 1 : e.key === 'ArrowUp' ? i - 1 : null;
+      if (n === null) return;
+      e.preventDefault();
+      daftar.children[(n + projects.length) % projects.length].focus();
+    });
+    daftar.appendChild(li);
+  });
+  pilih(0);
+
+  document.getElementById('sebelum').addEventListener('click', function () { pilih(aktif - 1); });
+  document.getElementById('sesudah').addEventListener('click', function () { pilih(aktif + 1); });
+  pvImg.addEventListener('click', function () { bukaZoom(aktif); });
+  document.getElementById('tutup').addEventListener('click', function () { zoom.close(); });
+  zoom.addEventListener('click', function (e) { if (e.target === zoom) zoom.close(); });
+
+  // Gambar miring mengikuti kursor (hanya di layar lebar)
+  var fig = document.getElementById('pv');
+  if (!reduce) {
+    fig.addEventListener('mousemove', function (e) {
+      var r = fig.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      fig.style.transform = 'perspective(900px) rotateY(' + (x * 5) + 'deg) rotateX(' + (-y * 5) + 'deg)';
+    });
+    fig.addEventListener('mouseleave', function () { fig.style.transform = ''; });
+  }
+
+  // Jam Cianjur
+  function jam() {
+    var t = new Intl.DateTimeFormat('id-ID', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Jakarta' }).format(new Date());
+    document.getElementById('jam').textContent = 'Cianjur, ' + t + ' WIB';
+  }
+  jam(); setInterval(jam, 30000);
+
+  // Tema: default terang
+  var root = document.documentElement, tombol = document.getElementById('tema');
+  function setTema(t) { root.setAttribute('data-theme', t); tombol.textContent = t === 'dark' ? 'Mode terang' : 'Mode gelap'; }
+  try { if (localStorage.getItem('tema') === 'dark') setTema('dark'); } catch (e) {}
+  tombol.addEventListener('click', function () {
+    var t = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    setTema(t);
+    try { localStorage.setItem('tema', t); } catch (e) {}
+  });
+
+  // Salin email
+  document.getElementById('salin').addEventListener('click', function () {
+    var s = document.getElementById('status'), teks = document.getElementById('email').textContent;
+    try {
+      navigator.clipboard.writeText(teks).then(
+        function () { s.textContent = 'Email tersalin'; },
+        function () { s.textContent = 'Gagal menyalin, salin manual ya.'; });
+    } catch (e) { s.textContent = 'Gagal menyalin, salin manual ya.'; }
+    setTimeout(function () { s.textContent = ''; }, 2500);
+  });
+</script>
 </body>
-
 </html>
