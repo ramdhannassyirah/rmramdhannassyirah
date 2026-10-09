@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="id" data-theme="light">
+<html lang="id" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta
@@ -777,6 +777,7 @@
         right: '<path d="m9 18 6-6-6-6"/>',
         menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
         x: '<path d="M18 6 6 18M6 6l12 12"/>',
+        spark: '<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3ZM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z"/>',
       };
       function ic(n, c, z) {
         return (
@@ -792,12 +793,7 @@
       [].forEach.call(document.querySelectorAll("[data-ic]"), function (el) {
         el.outerHTML = ic(el.dataset.ic, el.className);
       });
-      var sIc = {
-          Backend: "server",
-          Frontend: "layout",
-          Database: "database",
-          DevOps: "terminal",
-        },
+      var sIc = { Backend: "server", Frontend: "layout", Database: "database", DevOps: "terminal", "AI Assistant": "spark" },
         pIc = ["message", "branch", "code", "rocket"];
 
       /* ===== DATA: ubah isi di sini ===== */
@@ -890,6 +886,12 @@
             "CI/CD dengan GitHub Actions",
             "Git dan GitHub",
           ],
+        },
+        {
+          k: "AI Assistant",
+          j: "Pengembangan lebih cepat, kualitas tetap terjaga",
+          t: "Saya memakai asisten AI sebagai rekan kerja untuk mempercepat pekerjaan berulang: menyusun kerangka kode, merancang query, menulis draf pengujian, dan menelusuri penyebab bug. Setiap hasilnya saya tinjau, uji, dan sesuaikan dengan standar proyek, sehingga masa pengembangan lebih singkat tanpa mengorbankan kualitas kode.",
+          a: ["Pair programming dengan asisten AI", "Kerangka kode dan query lebih cepat", "Analisis error dan debugging", "Draf pengujian dan dokumentasi", "Tinjauan manual sebelum rilis"],
         },
       ];
       var proses = [
