@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="id" data-theme="dark">
+<html lang="id" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta
@@ -67,10 +67,19 @@
       html {
         scroll-behavior: smooth;
         scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 4.5rem);
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
       }
       body {
         background: var(--bg);
         color: var(--ink);
+        overflow-x: clip;
+        overflow-wrap: break-word;
+        -webkit-tap-highlight-color: transparent;
+      }
+      img,
+      svg {
+        max-width: 100%;
       }
       .u {
         text-decoration: underline;
@@ -131,6 +140,8 @@
         background: var(--surface);
         color: var(--ink);
         padding: 0.6rem 0.75rem;
+        font-size: 16px;
+        border-radius: 0;
       }
       details > summary {
         cursor: pointer;
@@ -162,6 +173,11 @@
       }
       dialog::backdrop {
         background: rgba(0, 0, 0, 0.72);
+      }
+      #zoom-img {
+        max-height: 84vh;
+        max-height: 84dvh;
+        object-fit: contain;
       }
       #bar {
         position: fixed;
@@ -236,7 +252,93 @@
       header nav a.on {
         color: var(--accent);
       }
+      @keyframes geser {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      .marq {
+        -webkit-mask-image: linear-gradient(
+          90deg,
+          transparent,
+          #000 7%,
+          #000 93%,
+          transparent
+        );
+        mask-image: linear-gradient(
+          90deg,
+          transparent,
+          #000 7%,
+          #000 93%,
+          transparent
+        );
+      }
+      .marq-t {
+        animation: geser 34s linear infinite;
+      }
+      .marq:hover .marq-t {
+        animation-play-state: paused;
+      }
+      .marq li {
+        margin-right: 0.75rem;
+        transition: border-color 0.2s;
+      }
+      .marq li:hover {
+        border-color: var(--accent);
+      }
+
+      /* ===== Perbaikan mobile ===== */
+      .noscroll {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      .noscroll::-webkit-scrollbar {
+        display: none;
+      }
+      #k-tabs {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+      }
+      #k-tabs .tab {
+        white-space: nowrap;
+        flex: none;
+      }
+      @media (max-width: 767px) {
+        .tab {
+          min-height: 44px;
+        }
+        .chip {
+          min-height: 40px;
+        }
+        #p-tabs {
+          width: 100%;
+        }
+        #p-tabs .tab {
+          width: 100%;
+          text-align: left;
+          border-bottom-color: var(--line);
+        }
+        #p-tabs .tab[aria-selected="true"] {
+          border-bottom-color: var(--accent);
+        }
+        details > summary {
+          min-height: 44px;
+        }
+      }
+      @media (max-width: 380px) {
+        .marq li {
+          margin-right: 0.5rem;
+        }
+      }
+
       @media (prefers-reduced-motion: reduce) {
+        .marq {
+          overflow-x: auto;
+        }
+        .dup {
+          display: none;
+        }
         html {
           scroll-behavior: auto;
         }
@@ -262,38 +364,83 @@
       style="top: env(safe-area-inset-top, 0px)"
     >
       <div
-        class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5"
+        class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-2 sm:py-3.5"
       >
         <a
           href="#atas"
-          class="flex items-center gap-2.5 text-base font-extrabold tracking-tight"
-          ><span
-            class="grid h-8 w-8 place-items-center bg-ink text-sm text-bg"
+          class="flex min-w-0 items-center gap-2.5 text-sm font-extrabold tracking-tight sm:text-base"
+        >
+          <span
+            class="grid h-8 w-8 flex-none place-items-center bg-ink text-sm text-bg"
             aria-hidden="true"
             >R</span
-          >Ramdhan Nassyirah</a
+          >
+          <span class="truncate">Ramdhan Nassyirah</span>
+        </a>
+        <nav
+          class="flex flex-none items-center gap-1 text-sm font-semibold sm:gap-6"
         >
-        <nav class="flex items-center gap-4 text-sm font-semibold sm:gap-6">
           <a href="#keahlian" class="u hidden sm:inline">Keahlian</a>
-          <a href="#proyek" class="u">Proyek</a>
+          <a href="#proyek" class="u hidden sm:inline">Proyek</a>
           <a href="#proses" class="u hidden sm:inline">Cara kerja</a>
           <a href="#faq" class="u hidden md:inline">FAQ</a>
-          <a href="#kontak" class="u">Kontak</a>
+          <a href="#kontak" class="u hidden sm:inline">Kontak</a>
           <button
             id="tema"
             type="button"
-            class="flex items-center gap-1.5 hover:text-accent"
+            class="flex min-h-[44px] min-w-[44px] items-center justify-center gap-1.5 hover:text-accent sm:min-h-0 sm:min-w-0"
             aria-label="Ganti tema"
           ></button>
+          <button
+            id="menu"
+            type="button"
+            class="grid h-11 w-11 place-items-center hover:text-accent sm:hidden"
+            aria-label="Buka menu"
+            aria-expanded="false"
+            aria-controls="mnav"
+          ></button>
         </nav>
+      </div>
+      <div
+        id="mnav"
+        hidden
+        class="absolute left-0 right-0 top-full border-b border-line bg-bg shadow-lg sm:hidden"
+      >
+        <div class="mx-auto flex max-w-6xl flex-col px-5 pb-2">
+          <a
+            href="#keahlian"
+            class="flex min-h-[48px] items-center border-b border-line text-base font-semibold"
+            >Keahlian</a
+          >
+          <a
+            href="#proyek"
+            class="flex min-h-[48px] items-center border-b border-line text-base font-semibold"
+            >Proyek</a
+          >
+          <a
+            href="#proses"
+            class="flex min-h-[48px] items-center border-b border-line text-base font-semibold"
+            >Cara kerja</a
+          >
+          <a
+            href="#faq"
+            class="flex min-h-[48px] items-center border-b border-line text-base font-semibold"
+            >FAQ</a
+          >
+          <a
+            href="#kontak"
+            class="flex min-h-[48px] items-center text-base font-semibold"
+            >Kontak</a
+          >
+        </div>
       </div>
     </header>
 
     <main id="atas" class="mx-auto max-w-6xl px-5">
-      <section class="py-14 md:py-24">
+      <section class="py-10 sm:py-14 md:py-24">
         <div>
           <h1
-            class="max-w-4xl text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] sm:text-5xl lg:text-6xl"
+            class="max-w-4xl text-[1.9rem] font-extrabold leading-[1.12] tracking-[-0.03em] min-[400px]:text-4xl sm:text-5xl sm:leading-[1.08] lg:text-6xl"
           >
             <span class="hl"
               ><span style="animation-delay: 0.05s"
@@ -310,7 +457,7 @@
             >
           </h1>
           <p
-            class="rv mt-6 max-w-[52ch] text-lg text-muted"
+            class="rv mt-5 max-w-[52ch] text-base text-muted sm:mt-6 sm:text-lg"
             style="transition-delay: 0.45s"
           >
             Saya Ramdhan, Full Stack Developer di Cianjur dengan sekitar 2 tahun
@@ -321,29 +468,29 @@
             kerja baru.
           </p>
           <div
-            class="rv mt-8 flex flex-wrap gap-3"
+            class="rv mt-7 flex flex-wrap gap-3 sm:mt-8"
             style="transition-delay: 0.55s"
           >
             <a
               href="#proyek"
-              class="inline-flex items-center gap-2 border border-ink bg-ink px-5 py-2.5 text-sm font-semibold text-bg hover:border-accent hover:bg-accent"
+              class="inline-flex min-h-[46px] flex-1 items-center justify-center gap-2 border border-ink bg-ink px-5 py-2.5 text-sm font-semibold text-bg hover:border-accent hover:bg-accent sm:flex-none"
               ><i data-ic="layers"></i>Lihat proyek</a
             >
             <a
               href="#kontak"
-              class="inline-flex items-center gap-2 border border-ink px-5 py-2.5 text-sm font-semibold hover:border-accent hover:text-accent"
+              class="inline-flex min-h-[46px] flex-1 items-center justify-center gap-2 border border-ink px-5 py-2.5 text-sm font-semibold hover:border-accent hover:text-accent sm:flex-none"
               ><i data-ic="mail"></i>Hubungi saya</a
             >
           </div>
           <dl
-            class="rv mt-10 grid max-w-xs grid-cols-2 gap-6 border-t border-line pt-6"
+            class="rv mt-8 grid max-w-xs grid-cols-2 gap-6 border-t border-line pt-6 sm:mt-10"
             style="transition-delay: 0.65s"
           >
             <div>
               <dt class="flex items-center gap-1.5 text-sm text-muted">
                 <i data-ic="briefcase"></i>Pengalaman
               </dt>
-              <dd class="text-3xl font-extrabold tracking-tight">
+              <dd class="text-2xl font-extrabold tracking-tight sm:text-3xl">
                 <span data-to="2">2</span> tahun
               </dd>
             </div>
@@ -351,17 +498,26 @@
               <dt class="flex items-center gap-1.5 text-sm text-muted">
                 <i data-ic="rocket"></i>Proyek rilis
               </dt>
-              <dd class="text-3xl font-extrabold tracking-tight">
+              <dd class="text-2xl font-extrabold tracking-tight sm:text-3xl">
                 <span data-to="3">3</span>
               </dd>
             </div>
           </dl>
         </div>
+        <div class="rv mt-12 sm:mt-16 md:mt-20">
+          <div class="marq overflow-hidden">
+            <ul
+              id="marq"
+              class="marq-t flex w-max"
+              aria-label="Daftar teknologi"
+            ></ul>
+          </div>
+        </div>
       </section>
 
-      <section id="keahlian" class="border-t border-line py-14">
+      <section id="keahlian" class="border-t border-line py-10 sm:py-14">
         <h2
-          class="max-w-[24ch] text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl"
+          class="max-w-[24ch] text-2xl font-extrabold leading-tight tracking-tight sm:text-4xl"
         >
           Kemampuan teknis saya
         </h2>
@@ -374,26 +530,28 @@
           role="tablist"
           aria-label="Bidang keahlian"
           id="k-tabs"
-          class="mt-8 flex gap-6 border-b border-line"
+          class="noscroll relative -mx-5 mt-6 flex gap-6 border-b border-line px-5 sm:mt-8 md:mx-0 md:px-0"
         ></div>
         <div
           id="k-isi"
-          class="grid gap-6 py-8 md:grid-cols-[1.2fr_1fr]"
+          class="grid gap-5 py-6 sm:gap-6 sm:py-8 md:grid-cols-[1.2fr_1fr]"
           role="tabpanel"
         ></div>
       </section>
 
-      <section id="proyek" class="border-t border-line py-14">
-        <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
+      <section id="proyek" class="border-t border-line py-10 sm:py-14">
+        <h2 class="text-2xl font-extrabold tracking-tight sm:text-4xl">
           Proyek yang sudah berjalan
         </h2>
         <p class="mt-3 max-w-[56ch] text-muted">
           Tiga sistem yang sudah rilis dan dipakai pengguna. Buka studi kasus
           untuk melihat masalah yang dihadapi dan cara saya menyelesaikannya.
         </p>
-        <div id="chips" class="mt-6 flex flex-wrap gap-2"></div>
-        <div class="mt-10 grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
-          <ul id="daftar" class="space-y-10"></ul>
+        <div id="chips" class="mt-5 flex flex-wrap gap-2 sm:mt-6"></div>
+        <div
+          class="mt-8 grid gap-12 sm:mt-10 lg:grid-cols-[1fr_1.05fr] lg:gap-16"
+        >
+          <ul id="daftar" class="space-y-12 lg:space-y-10"></ul>
           <div class="hidden lg:block">
             <div
               class="sticky"
@@ -438,13 +596,13 @@
         </div>
       </section>
 
-      <section id="proses" class="border-t border-line py-14">
+      <section id="proses" class="border-t border-line py-10 sm:py-14">
         <h2
-          class="max-w-[24ch] text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl"
+          class="max-w-[24ch] text-2xl font-extrabold leading-tight tracking-tight sm:text-4xl"
         >
           Cara saya mengerjakan sebuah fitur
         </h2>
-        <div class="mt-8 grid gap-8 md:grid-cols-[18rem_1fr]">
+        <div class="mt-6 grid gap-6 sm:mt-8 sm:gap-8 md:grid-cols-[18rem_1fr]">
           <div
             id="p-tabs"
             role="tablist"
@@ -454,26 +612,29 @@
           <div
             id="p-isi"
             role="tabpanel"
-            class="border-l-4 border-accent pl-6"
+            class="border-l-4 border-accent pl-4 sm:pl-6"
           ></div>
         </div>
       </section>
 
-      <section id="faq" class="border-t border-line py-14">
-        <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
+      <section id="faq" class="border-t border-line py-10 sm:py-14">
+        <h2 class="text-2xl font-extrabold tracking-tight sm:text-4xl">
           Hal yang biasanya ingin diketahui rekruter
         </h2>
         <div
           id="faq-isi"
-          class="mt-8 max-w-3xl divide-y divide-line border-y border-line"
+          class="mt-6 max-w-3xl divide-y divide-line border-y border-line sm:mt-8"
         ></div>
       </section>
 
-      <section id="kontak" class="border-t border-line py-14 pb-20">
-        <div class="grid gap-10 lg:grid-cols-2 lg:gap-16">
+      <section
+        id="kontak"
+        class="border-t border-line py-10 pb-16 sm:py-14 sm:pb-20"
+      >
+        <div class="grid gap-8 lg:grid-cols-2 lg:gap-16">
           <div>
             <h2
-              class="max-w-[18ch] text-3xl font-extrabold leading-tight tracking-[-0.03em] sm:text-5xl"
+              class="max-w-[18ch] text-[1.7rem] font-extrabold leading-tight tracking-[-0.03em] sm:text-5xl"
             >
               Sedang membuka lowongan Full Stack Developer?
             </h2>
@@ -481,22 +642,29 @@
               Kirim detail posisinya lewat email atau formulir ini. Saya siap
               membahas pengalaman, jadwal wawancara, dan tes teknis.
             </p>
-            <div class="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
+            <div
+              class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-3 sm:mt-7 sm:gap-x-5"
+            >
               <i data-ic="mail" class="text-2xl text-accent"></i
-              ><span id="email" class="text-lg font-bold"
+              ><span
+                id="email"
+                class="min-w-0 break-all text-base font-bold sm:text-lg"
                 >ramdhannassyirahh@gmail.com</span
               >
               <button
                 id="salin"
                 type="button"
-                class="inline-flex items-center gap-2 border border-ink bg-ink px-4 py-2 text-sm font-semibold text-bg hover:border-accent hover:bg-accent"
+                class="inline-flex min-h-[44px] w-full items-center justify-center gap-2 border border-ink bg-ink px-4 py-2 text-sm font-semibold text-bg hover:border-accent hover:bg-accent sm:w-auto"
               >
                 <i data-ic="copy"></i>Salin email
               </button>
               <span id="status" class="text-sm text-muted" role="status"></span>
             </div>
           </div>
-          <form id="form" class="space-y-4 border border-line bg-surface p-5">
+          <form
+            id="form"
+            class="space-y-4 border border-line bg-surface p-4 sm:p-5"
+          >
             <label class="block text-sm font-semibold"
               >Nama Anda<input
                 id="f-nama"
@@ -531,7 +699,7 @@
             </label>
             <button
               type="submit"
-              class="inline-flex items-center gap-2 border border-ink bg-ink px-5 py-2.5 text-sm font-semibold text-bg hover:border-accent hover:bg-accent"
+              class="inline-flex min-h-[46px] w-full items-center justify-center gap-2 border border-ink bg-ink px-5 py-2.5 text-sm font-semibold text-bg hover:border-accent hover:bg-accent sm:w-auto"
             >
               <i data-ic="mail"></i>Buat email
             </button>
@@ -562,7 +730,7 @@
         /><button
           id="tutup"
           type="button"
-          class="absolute right-3 top-3 bg-ink px-3 py-1.5 text-sm font-semibold text-bg"
+          class="absolute right-3 top-3 bg-ink px-4 py-2 text-sm font-semibold text-bg"
         >
           Tutup
         </button>
@@ -607,6 +775,8 @@
         help: '<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/>',
         left: '<path d="m15 18-6-6 6-6"/>',
         right: '<path d="m9 18 6-6-6-6"/>',
+        menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
+        x: '<path d="M18 6 6 18M6 6l12 12"/>',
       };
       function ic(n, c, z) {
         return (
@@ -731,10 +901,7 @@
           "Merancang alur dan data",
           "Alur kerja dan struktur database saya rancang lebih dulu, sehingga fitur punya fondasi yang jelas dan mudah dikembangkan.",
         ],
-        [
-          "Membangun bertahap",
-          "Fitur dikerjakan per bagian kecil dan siap dicoba, jadi masukan dari tim atau pengguna masuk lebih awal.",
-        ],
+        ["Membangun bertahap", "Fitur dikerjakan per bagian kecil dan siap dicoba, jadi masukan dari tim atau pengguna masuk lebih awal. Saya memakai asisten AI untuk mempercepat pekerjaan berulang seperti kerangka kode, query, dan draf pengujian, sehingga masa pengembangan lebih singkat. Semua hasilnya tetap saya tinjau dan pahami sendiri sebelum dipakai."],
         [
           "Uji dan rilis",
           "Saya menguji alur utama bersama pengguna, lalu merilis ke VPS lewat alur otomatis GitHub Actions dan tetap merawat sistem setelah dipakai.",
@@ -775,6 +942,13 @@
         return function (i) {
           Array.prototype.forEach.call(wadah.children, function (b, n) {
             b.setAttribute("aria-selected", n === i);
+            /* geser tab aktif ke tengah jika daftar tab bisa di-scroll (mobile) */
+            if (n === i && wadah.scrollWidth > wadah.clientWidth) {
+              wadah.scrollTo({
+                left: b.offsetLeft - (wadah.clientWidth - b.offsetWidth) / 2,
+                behavior: reduce ? "auto" : "smooth",
+              });
+            }
           });
         };
       }
@@ -799,11 +973,11 @@
         $("k-isi").innerHTML =
           "<div>" +
           ic(sIc[s.k], "mb-3 block text-accent", 2.25) +
-          '<h3 class="text-2xl font-extrabold tracking-tight">' +
+          '<h3 class="text-xl font-extrabold tracking-tight sm:text-2xl">' +
           s.j +
           '</h3><p class="mt-3 max-w-[56ch] text-muted">' +
           s.t +
-          '</p></div><ul class="space-y-2 border-l border-line pl-5 font-semibold">' +
+          '</p></div><ul class="space-y-2 border-t border-line pt-5 font-semibold md:border-l md:border-t-0 md:pl-5 md:pt-0">' +
           s.a
             .map(function (x) {
               return (
@@ -881,9 +1055,9 @@
         li.tabIndex = 0;
         li.dataset.on = "false";
         li.className =
-          "group cursor-pointer border-l-4 border-transparent pl-5 data-[on=true]:border-accent";
+          "group cursor-pointer border-l-4 border-transparent pl-4 data-[on=true]:border-accent sm:pl-5";
         li.innerHTML =
-          '<h3 class="text-2xl font-extrabold tracking-tight text-muted group-hover:text-ink group-data-[on=true]:text-ink">' +
+          '<h3 class="text-xl font-extrabold tracking-tight text-ink sm:text-2xl lg:text-muted lg:group-hover:text-ink lg:group-data-[on=true]:text-ink">' +
           p.nama +
           '</h3><p class="flex items-center gap-1.5 text-sm text-muted">' +
           ic("building") +
@@ -907,14 +1081,14 @@
             })
             .join("") +
           "</ul>" +
-          '<details class="mt-3 max-w-[54ch]"><summary class="u inline-block text-sm font-semibold">Studi kasus <span class="plus">+</span></summary><dl class="mt-3 space-y-3 text-sm"><div><dt class="font-bold">Masalah yang dihadapi</dt><dd class="text-muted">' +
+          '<details class="mt-3 max-w-[54ch]"><summary class="u inline-flex min-h-[44px] items-center text-sm font-semibold sm:min-h-0">Studi kasus <span class="plus ml-1">+</span></summary><dl class="mt-3 space-y-3 text-sm"><div><dt class="font-bold">Masalah yang dihadapi</dt><dd class="text-muted">' +
           p.masalah +
           '</dd></div><div><dt class="font-bold">Cara penyelesaiannya</dt><dd class="text-muted">' +
           p.solusi +
           "</dd></div></dl></details>" +
-          '<p class="mt-3">' +
+          '<p class="mt-2 sm:mt-3">' +
           (p.url
-            ? '<a class="u inline-flex items-center gap-1.5 text-sm font-semibold" href="' +
+            ? '<a class="u inline-flex min-h-[44px] items-center gap-1.5 text-sm font-semibold sm:min-h-0" href="' +
               p.url +
               '" target="_blank" rel="noopener">Buka proyek' +
               ic("ext") +
@@ -1017,7 +1191,7 @@
       function isiP0(i) {
         $("p-isi").innerHTML =
           ic(pIc[i], "mb-3 block text-accent", 2.25) +
-          '<h3 class="text-2xl font-extrabold tracking-tight">' +
+          '<h3 class="text-xl font-extrabold tracking-tight sm:text-2xl">' +
           proses[i][0] +
           '</h3><p class="mt-3 max-w-[54ch] text-muted">' +
           proses[i][1] +
@@ -1034,7 +1208,7 @@
       $("faq-isi").innerHTML = faq
         .map(function (f) {
           return (
-            '<details class="py-4"><summary class="flex items-center justify-between gap-4 text-lg font-bold"><span class="flex items-center gap-3">' +
+            '<details class="py-3 sm:py-4"><summary class="flex min-h-[44px] items-center justify-between gap-4 text-base font-bold sm:text-lg"><span class="flex items-center gap-3">' +
             ic("help", "text-accent") +
             f[0] +
             '</span><span class="plus text-2xl text-accent">+</span></summary><p class="mt-3 max-w-[60ch] text-muted">' +
@@ -1117,6 +1291,44 @@
           localStorage.setItem("tema", t);
         } catch (x) {}
       });
+
+      /* ===== Menu mobile ===== */
+      var mb = $("menu"),
+        mn = $("mnav");
+      /* dua ikon dibuat sekali lalu ditukar tampilannya; innerHTML tidak diganti saat klik */
+      mb.innerHTML = ic("menu", "", 1.5) + ic("x", "", 1.5);
+      var iMenu = mb.children[0],
+        iX = mb.children[1];
+      function setMenu(o) {
+        mn.hidden = !o;
+        iMenu.style.display = o ? "none" : "block";
+        iX.style.display = o ? "block" : "none";
+        mb.setAttribute("aria-expanded", o);
+        mb.setAttribute("aria-label", o ? "Tutup menu" : "Buka menu");
+      }
+      setMenu(false);
+      mb.addEventListener("click", function () {
+        setMenu(mn.hidden);
+      });
+      [].forEach.call(mn.querySelectorAll("a"), function (a) {
+        a.addEventListener("click", function () {
+          setMenu(false);
+        });
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") setMenu(false);
+      });
+      document.addEventListener("click", function (e) {
+        if (!mn.hidden && !mn.contains(e.target) && !mb.contains(e.target))
+          setMenu(false);
+      });
+      var mq = window.matchMedia("(min-width: 640px)");
+      function onMq(e) {
+        if (e.matches) setMenu(false);
+      }
+      if (mq.addEventListener) mq.addEventListener("change", onMq);
+      else if (mq.addListener) mq.addListener(onMq);
+
       window.addEventListener(
         "scroll",
         function () {
@@ -1126,6 +1338,47 @@
         },
         { passive: true },
       );
+
+      /* ===== Marquee stack ===== */
+      var stack = [
+        ["Laravel", "#FF2D20", "L", "#fff"],
+        ["PHP", "#777BB4", "P", "#fff"],
+        ["Java Spring Boot", "#6DB33F", "S", "#111"],
+        ["Vue.js", "#4FC08D", "V", "#111"],
+        ["Nuxt.js", "#00DC82", "N", "#111"],
+        ["Alpine.js", "#8BC0D0", "A", "#111"],
+        ["Tailwind CSS", "#06B6D4", "T", "#111"],
+        ["Bootstrap", "#7952B3", "B", "#fff"],
+        ["PostgreSQL", "#336791", "P", "#fff"],
+        ["MySQL", "#4479A1", "M", "#fff"],
+        ["Node.js", "#5FA04E", "N", "#fff"],
+        ["Nginx", "#009639", "N", "#fff"],
+        ["Ubuntu", "#E95420", "U", "#fff"],
+        ["GitHub Actions", "#2088FF", "G", "#fff"],
+      ];
+      $("marq").innerHTML = [0, 1]
+        .map(function (k) {
+          return stack
+            .map(function (t) {
+              return (
+                '<li class="' +
+                (k ? "dup " : "") +
+                'inline-flex items-center gap-2 whitespace-nowrap border border-line bg-surface px-3.5 py-2 text-sm font-semibold"' +
+                (k ? ' aria-hidden="true"' : "") +
+                '><span aria-hidden="true" class="grid h-5 w-5 place-items-center text-[11px] font-extrabold" style="background:' +
+                t[1] +
+                ";color:" +
+                t[3] +
+                '">' +
+                t[2] +
+                "</span>" +
+                t[0] +
+                "</li>"
+              );
+            })
+            .join("");
+        })
+        .join("");
 
       /* ===== Animasi ===== */
       function anim(el) {
@@ -1162,6 +1415,7 @@
           li.style.transitionDelay = i * 90 + "ms";
         },
       );
+      /* threshold kecil agar elemen tinggi di layar ponsel tetap muncul */
       var io = new IntersectionObserver(
         function (es) {
           es.forEach(function (e) {
@@ -1172,7 +1426,7 @@
             [].forEach.call(el.querySelectorAll("[data-to]"), hitung);
           });
         },
-        { threshold: 0.15 },
+        { threshold: 0.05, rootMargin: "0px 0px -4% 0px" },
       );
       [].forEach.call(document.querySelectorAll(".rv"), function (el) {
         io.observe(el);
