@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="id" data-theme="light">
+<html lang="id" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta
@@ -38,6 +38,9 @@
           },
         },
       };
+    </script>
+    <script>
+      document.documentElement.classList.add("js");
     </script>
     <style>
       :root {
@@ -156,12 +159,84 @@
         background: var(--accent);
         z-index: 40;
       }
+      .js .rv {
+        opacity: 0;
+        transform: translateY(14px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .js .rv.in {
+        opacity: 1;
+        transform: none;
+      }
+      .hl {
+        display: block;
+        overflow: hidden;
+        padding-bottom: 0.1em;
+        margin-bottom: -0.1em;
+      }
+      .hl > span {
+        display: block;
+        transform: translateY(110%);
+        animation: naik 0.85s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+      }
+      @keyframes naik {
+        to {
+          transform: none;
+        }
+      }
+      @keyframes masuk {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      .ani {
+        animation: masuk 0.4s ease both;
+      }
+      details[open] > p {
+        animation: masuk 0.3s ease;
+      }
+      a,
+      button {
+        transition:
+          background-color 0.2s,
+          color 0.2s,
+          border-color 0.2s;
+      }
+      button:active {
+        transform: translateY(1px);
+      }
+      .tab {
+        transition:
+          color 0.2s,
+          border-color 0.2s;
+      }
+      h3 {
+        transition: color 0.2s;
+      }
+      header nav a.on {
+        color: var(--accent);
+      }
       @media (prefers-reduced-motion: reduce) {
         html {
           scroll-behavior: auto;
         }
         * {
           transition: none !important;
+          animation: none !important;
+        }
+        .js .rv {
+          opacity: 1;
+          transform: none;
+        }
+        .hl > span {
+          transform: none;
         }
       }
     </style>
@@ -196,10 +271,24 @@
           <h1
             class="max-w-4xl text-4xl font-extrabold leading-[1.08] tracking-[-0.03em] sm:text-5xl lg:text-6xl"
           >
-            Full Stack Developer yang mengerjakan fitur dari database sampai
-            tampilan.
+            <span class="hl"
+              ><span style="animation-delay: 0.05s"
+                >Full Stack Developer yang</span
+              ></span
+            ><span class="hl"
+              ><span style="animation-delay: 0.17s"
+                >mengerjakan fitur dari</span
+              ></span
+            ><span class="hl"
+              ><span style="animation-delay: 0.29s"
+                >database sampai tampilan.</span
+              ></span
+            >
           </h1>
-          <p class="mt-6 max-w-[52ch] text-lg text-muted">
+          <p
+            class="rv mt-6 max-w-[52ch] text-lg text-muted"
+            style="transition-delay: 0.45s"
+          >
             Saya Ramdhan, Full Stack Developer di Cianjur dengan sekitar 2 tahun
             pengalaman. Saya sudah merilis dashboard monitoring real-time,
             sistem audit, dan website layanan memakai Laravel, Nuxt, dan
@@ -207,7 +296,10 @@
             otomatis dengan GitHub Actions. Saat ini saya terbuka untuk peluang
             kerja baru.
           </p>
-          <div class="mt-8 flex flex-wrap gap-3">
+          <div
+            class="rv mt-8 flex flex-wrap gap-3"
+            style="transition-delay: 0.55s"
+          >
             <a
               href="#proyek"
               class="border border-ink bg-ink px-5 py-2.5 text-sm font-semibold text-bg hover:border-accent hover:bg-accent"
@@ -220,15 +312,20 @@
             >
           </div>
           <dl
-            class="mt-10 grid max-w-xs grid-cols-2 gap-6 border-t border-line pt-6"
+            class="rv mt-10 grid max-w-xs grid-cols-2 gap-6 border-t border-line pt-6"
+            style="transition-delay: 0.65s"
           >
             <div>
               <dt class="text-sm text-muted">Pengalaman</dt>
-              <dd class="text-3xl font-extrabold tracking-tight">2 tahun</dd>
+              <dd class="text-3xl font-extrabold tracking-tight">
+                <span data-to="2">2</span> tahun
+              </dd>
             </div>
             <div>
               <dt class="text-sm text-muted">Proyek rilis</dt>
-              <dd class="text-3xl font-extrabold tracking-tight">3</dd>
+              <dd class="text-3xl font-extrabold tracking-tight">
+                <span data-to="3">3</span>
+              </dd>
             </div>
           </dl>
         </div>
@@ -597,6 +694,10 @@
         },
       );
       function isiK(i) {
+        isiK0(i);
+        anim($("k-isi"));
+      }
+      function isiK0(i) {
         var s = skills[i];
         $("k-isi").innerHTML =
           '<div><h3 class="text-2xl font-extrabold tracking-tight">' +
@@ -793,6 +894,10 @@
         },
       );
       function isiP(i) {
+        isiP0(i);
+        anim($("p-isi"));
+      }
+      function isiP0(i) {
         $("p-isi").innerHTML =
           '<h3 class="text-2xl font-extrabold tracking-tight">' +
           proses[i][0] +
@@ -897,6 +1002,78 @@
         },
         { passive: true },
       );
+
+      /* ===== Animasi ===== */
+      function anim(el) {
+        if (reduce) return;
+        [].forEach.call(el.querySelectorAll(":scope > *, li"), function (n, i) {
+          n.classList.add("ani");
+          n.style.animationDelay = i * 55 + "ms";
+        });
+      }
+      function hitung(el) {
+        if (reduce) return;
+        var to = +el.dataset.to,
+          t0 = null;
+        el.textContent = "0";
+        function f(t) {
+          if (!t0) t0 = t;
+          var k = Math.min(1, (t - t0) / 1000);
+          el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3)));
+          if (k < 1) requestAnimationFrame(f);
+        }
+        requestAnimationFrame(f);
+      }
+      [].forEach.call(
+        document.querySelectorAll(
+          "main section:not(:first-of-type) h2, main section:not(:first-of-type) h2 + p, #chips, #k-tabs, #k-isi, #p-tabs, #p-isi, #faq-isi, #form, #daftar > li, #kontak .flex",
+        ),
+        function (el) {
+          el.classList.add("rv");
+        },
+      );
+      [].forEach.call(
+        document.querySelectorAll("#daftar > li"),
+        function (li, i) {
+          li.style.transitionDelay = i * 90 + "ms";
+        },
+      );
+      var io = new IntersectionObserver(
+        function (es) {
+          es.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            var el = e.target;
+            el.classList.add("in");
+            io.unobserve(el);
+            [].forEach.call(el.querySelectorAll("[data-to]"), hitung);
+          });
+        },
+        { threshold: 0.15 },
+      );
+      [].forEach.call(document.querySelectorAll(".rv"), function (el) {
+        io.observe(el);
+      });
+      var links = {};
+      [].forEach.call(
+        document.querySelectorAll('header nav a[href^="#"]'),
+        function (a) {
+          links[a.getAttribute("href").slice(1)] = a;
+        },
+      );
+      var spy = new IntersectionObserver(
+        function (es) {
+          es.forEach(function (e) {
+            if (e.isIntersecting)
+              Object.keys(links).forEach(function (k) {
+                links[k].classList.toggle("on", k === e.target.id);
+              });
+          });
+        },
+        { rootMargin: "-45% 0px -50% 0px" },
+      );
+      ["keahlian", "proyek", "proses", "faq", "kontak"].forEach(function (id) {
+        spy.observe($(id));
+      });
     </script>
   </body>
 </html>
